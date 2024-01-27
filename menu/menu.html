@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .menu-item {
+            width: 30%;
+            margin: 1%;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 300px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            opacity: 0;
+            /* Set opacity to 0 for initial hidden state */
+            animation: fadeIn 1s ease-in-out forwards;
+            /* Use fadeIn animation */
+        }
+
+        @keyframes fadeIn {
+      from {
+        opacity: 0; /* Set opacity to 0 for initial hidden state */
+      }
+      to {
+        opacity: 1; /* Set opacity to 1 for final visible state */
+      }
+    }
+
+        .menu-item .details {
+            padding: 10px;
+        }
+
+        .menu-item h3 {
+            margin-top: 0;
+        }
+
+        .menu-item p {
+            margin-bottom: 0;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .order-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .order-button {
+            background-color: #7f7f7f;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .back-button {
+            background-color: #7f7f7f;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            background-color: #ff3a3a;
+        }
+
+        .order-button:hover {
+            background-color: rgba(144, 202, 249);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Example Menu Items -->
+    <div class="menu-item">
+        <img src="../image/es teller.jpeg" alt="es teller">
+        <div class="details">
+            <h3>Es Teller</h3>
+            <p>PO setiap hari senin dan kamis</p>
+            <P><i style="color: red;">menyebabkan kecanduan!</i></P>
+            <p>Rp30K</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="../image/buko pandan.jpeg" alt="buko pandan">
+        <div class="details">
+            <h3>Buko Pandan 400ml</h3>
+            <p>PO setiap hari senin dan kamis</p>
+            <P><i style="color: red;">bohong kalau ga pesen lagi!!</i></P>
+            <p>Rp30K/400ml atau Rp60K/1000ml</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://img.okezone.com/content/2020/02/29/298/2176139/resep-ayam-ungkep-praktis-untuk-persediaan-lauk-hari-esok-JAwGhRE4BQ.jpg"
+            alt="ayam ungkep">
+        <div class="details">
+            <h3>Ayam Ungkep</h3>
+            <P><i style="color: red;">Kuningnya bukan kuning gigi tapi kuning bumbu, bikin ngunyah terus!!</i></P>
+            <p>Rp65K/Ekor</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://cdn.idntimes.com/content-images/community/2019/05/46628007-1217804548383095-4557873202657583863-n-4fc53f0fea2ebf445a3d7c8254eb77ef_600x400.jpg"
+            alt="sambel">
+        <div class="details">
+            <h3>Sambel teri medan</h3>
+            <P><i style="color: red;">Tenang bisa dimakan kok karena ikannya udah mati!</i></P>
+            <p>Rp35K/toples</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://img-global.cpcdn.com/recipes/8ae707fff8b71194/680x482cq70/asinan-nanas-foto-resep-utama.jpg"
+            alt="asinan nanans">
+        <div class="details">
+            <h3>Asinan nanas</h3>
+            <P><i style="color: red;">ga bikin gatel dong!</i></P>
+            <p>Rp30K</p>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="https://www.pasundanekspres.co/wp-content/uploads/2023/12/fromandroid-8736f04880ee7d1feeb516754da15c86_600x400.jpg"
+            alt="sambel umi">
+        <div class="details">
+            <h3>Sambel cumi asin</h3>
+            <P><i style="color: red;">ga ada lawan!</i></P>
+            <p>Rp35K/toples</p>
+        </div>
+    </div>
+    <!-- Add more menu items as needed -->
+    <a class="back-button" href="../index.html">back to Home</a>
+
+    <a class="button order-button" href="../order/order.html">Order Now!</a>
+</body>
+
+</html>

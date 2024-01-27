@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elcalief Home Made</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('https://images.pexels.com/photos/531905/pexels-photo-531905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: crimson;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            font-size: 2em;
+        }
+
+        footer {
+            color: #fff;
+            text-align: center;
+            padding: 3px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .animated-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .animated-text span {
+            display: inline-block;
+            transform: translateY(1em);
+            opacity: 0;
+            animation: revealText 1s ease forwards;
+        }
+
+        @keyframes revealText {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="../elcalief/menu/menu.html">Menu</a>
+            <a href="contact/contact.html">Contact Me</a>
+            <a href="contruction.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="animated-text">
+            <span>E</span>
+            <span>L</span>
+            <span>C</span>
+            <span>A</span>
+            <span>L</span>
+            <span>I</span>
+            <span>E</span>
+            <span>F</span>
+            <span> </span>
+            <span>H</span>
+            <span>O</span>
+            <span>M</span>
+            <span>E</span>
+            <span> </span>
+            <span>M</span>
+            <span>A</span>
+            <span>D</span>
+            <span>E</span>
+        </h1>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Elcalief Hallal And Healthy</p>
+    </footer>
+    <script>
+        const animatedText = document.querySelector('.animated-text');
+
+        function restartAnimation() {
+            animatedText.classList.remove('animate');
+            void animatedText.offsetWidth; // Trigger reflow
+            animatedText.classList.add('animate');
+        }
+        setInterval(restartAnimation, 4000); // Restart every 4 seconds
+    </script>
+</body>
+</html>
