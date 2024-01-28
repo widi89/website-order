@@ -4,280 +4,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemesanan Makanan</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Order Food</title>
     <style>
         body {
-            color: white;
-            background-color: #2C3E50;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-            margin-bottom: 50px;
-            /* Menyediakan ruang untuk footer */
-        }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Membuat kontainer penuh tinggi setidaknya 100% tinggi viewport */
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+.navbar {
+    background-color: #ecdede;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
 
-        table,
-        th,
-        td {
-            border: 1px solid #ddd;
-        }
+.menu-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
 
-        th,
-        td {
-            padding: 10px;
-        }
+.menu-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+    max-height: 400px;
+    overflow: auto;
+}
 
-        th {
-            color: black;
-            background-color: rgb(177, 177, 177);
-        }
+@media screen and (max-width: 768px) {
+    .menu-container {
+        grid-template-columns: 1fr; /* Satu kolom ketika layar lebih kecil dari 768px */
+    }
+}
 
-        input,
-        button {
-            margin: 5px;
-            padding: 8px;
-            font-size: 16px;
-        }
+.menu-card:hover {
+    transform: scale(1.05);
+}
 
-        button {
-            cursor: pointer;
+.menu-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
 
-        }
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
 
-        .update-button {
-            background-color: #3498db;
-            /* Warna biru untuk tombol update */
-            color: white;
-        }
+p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+}
 
-        .delete-button {
-            background-color: #e74c3c;
-            /* Warna merah untuk tombol delete */
-            color: white;
-        }
+.price {
+    font-size: 1.25rem;
+    color: #333;
+}
 
-        .waiting {
-            color: whitesmoke;
-            background-color: #F5B041;
-            /* Warna kuning untuk latar belakang status waiting */
-        }
+.quantity-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
-        .paid {
-            color: whitesmoke;
-            background-color: #58D68D;
-            /* Warna hijau untuk latar belakang status paid */
-        }
+.quantity-btn {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+}
 
-        footer {
-            color: black;
-            background-color: #f2f2f2;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-sizing: border-box;
-            /* Menjamin width 100% termasuk padding */
-            left: 0;
-            right: 0;
-        }
-        .listMenu{
-            color: crimson ;
-        }
+.quantity {
+    margin: 0 10px;
+    font-size: 1.2rem;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+button {
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #333;
+    color: white;
+}
+
+footer {
+    background-color: #ecdede;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+
+
     </style>
 </head>
 
 <body>
-    <h1>Cara Pemesanan Makanan</h1>
-    <p>1. Masukan nama pemesan</p>
-    <p>2. Tulis dan sesuaikan nama menu pada kolom Food order sesuai dengan List <a class="listMenu" href="../menu/menu.html"
-            target="_blank">Menu</a></p>
-    <!-- Form Pemesanan -->
-    <form id="orderForm">
-        <label for="name">Nama:</label>
-        <input type="text" id="name" required>
 
-        <label for="foodOrder">Food Order:</label>
-        <input type="text" id="foodOrder" required>
+    <nav class="navbar">
+        <p>Menu Ready On Below!</p>
+    </nav>
 
-        <button type="button" onclick="addOrder()">Tambah Pesanan</button>
-    </form>
+    <div class="menu-container" id="menu-container">
+        <!-- Card for each menu item -->
+        <div class="menu-card" data-menu="Es teller" data-price="30">
+            <img src="https://asset.kompas.com/crops/_kSWBlZOkG4xzoUL6sPgNf5IJOY=/0x0:698x465/750x500/data/photo/2021/04/22/60813ec0aa4a3.jpg" alt="Es Teller">
+            <h3>Es Teller</h3>
+            <p>Deskripsi : alpukat, kelapa, nangka dan susu</p>
+            <p class="price">Rp 30K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
 
-    <!-- Tabel Pemesanan -->
-    <table id="orderTable">
-        <tr>
-            <th>Nama</th>
-            <th>Food Order</th>
-            <th>Remark</th>
-            <th>Aksi</th>
-        </tr>
-    </table>
-    <footer>
-        <p>&copy; 2024 Elcalief Hallal And Healthy</p>
+        <div class="menu-card" data-menu="Buko Pandan 400ml" data-price="30">
+            <img src="https://images.tokopedia.net/img/JFrBQq/2023/10/3/7b6bdd46-453b-4e83-a653-e1fd3fc91e5d.jpg" alt="buko pandan400">
+            <h3>Buko Pandan 400 ml</h3>
+            <p>Deskripsi ager, susu, sagu mutiara, keju</p>
+            <p class="price">Rp 30K/400 ml</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Buko Pandan 1 L" data-price="60">
+            <img src="https://cdn.idntimes.com/content-images/community/2023/11/whatsapp-image-2023-11-11-at-085831-e6b2230e908fbc72b6db8959e2c8d830-0bab33f880e3cc2521f84ff55d4ee069_600x400.jpeg" alt="buko pandan1">
+            <h3>Buko Pandan 1 L</h3>
+            <p>Deskripsi ager, susu, sagu mutiara, keju</p>
+            <p class="price">Rp 60K/1 L</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Asinan Nanas" data-price="35">
+            <img src="https://static.promediateknologi.id/crop/91x153:814x625/750x500/webp/photo/2022/11/20/2505487525.png" alt="Asinan Nanas">
+            <h3>Asinan Nanas</h3>
+            <p>Deskripsi 500gr</p>
+            <p class="price">Rp 30K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Ayam Ungkep" data-price="65">
+            <img src="https://img-global.cpcdn.com/recipes/17b25051dd749fed/680x482cq70/ayam-ungkep-bumbu-kuning-foto-resep-utama.jpg" alt="Ayam Ungkep">
+            <h3>Ayam Ungkep</h3>
+            <p>Deskripsi Ayam 1 ekor ( 8 potong bagian)</p>
+            <p class="price">Rp 65K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Sambel Teri Medan" data-price="35">
+            <img src="https://img-global.cpcdn.com/recipes/28661d50d3e571fc/680x482cq70/sambal-teri-medan-foto-resep-utama.jpg"
+                alt="Samel Teri Medan">
+            <h3>Sambel Teri</h3>
+            <p>Deskripsi 150gr</p>
+            <p class="price">Rp 35K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Sambel Cumi" data-price="35">
+            <img src="https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/08/05/Screenshot_2023-08-05-18-09-59-21_f9ee0578fe1cc94de7482bd41accb329-535407202.jpg"
+                alt="Sambel Cumi">
+            <h3>Sambel Cumi</h3>
+            <p>Deskripsi 150gr</p>
+            <p class="price">Rp 35K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Sambel Pete" data-price="35">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSETQywZ9negokqMrPxoLCiSXcEvRH45ZGXdw&usqp=CAU"
+                alt="Sambel Pete">
+            <h3>Sambel Pete</h3>
+            <p>Deskripsi 150gr</p>
+            <p class="price">Rp 35K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+
+        <div class="menu-card" data-menu="Sambel Jambal" data-price="35">
+            <img src="https://cdn.idntimes.com/content-images/post/20210922/237061368-220952129963127-7491598949335052568-n-05334491444d6b8c11d9173577b881e2_600x400.jpg"
+                alt="Sambel Jambal">
+            <h3>Sambel Jambal</h3>
+            <p>Deskripsi 150gr</p>
+            <p class="price">Rp 35K</p>
+            <div class="quantity-container">
+                <button class="quantity-btn" onclick="addToCart(this)">+</button>
+                <span class="quantity">0</span>
+                <button class="quantity-btn" onclick="removeFromCart(this)">-</button>
+            </div>
+        </div>
+        <!-- Add more menu items here -->
+    </div>
+
+    <div class="action-buttons">
+        <button onclick="submitOrder()">Submit Pesanan</button>
+
+        <button onclick="clearQuantities()">Clear</button>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Elcalief's Table</p>
     </footer>
-    <script>
-        function addOrder() {
-            var name = document.getElementById('name').value;
-            var foodOrder = document.getElementById('foodOrder').value;
 
-            if (name && foodOrder) {
-                var table = document.getElementById('orderTable');
-                var row = table.insertRow(-1);
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-                var cell3 = row.insertCell(2);
-                var cell4 = row.insertCell(3);
 
-                cell1.innerHTML = name;
-                cell2.innerHTML = foodOrder;
-                cell3.innerHTML = 'Waiting';
-                cell4.innerHTML = '<button onclick="updateRemark(this)">Update</button> ' +
-                    '<button onclick="deleteOrder(this)">Delete</button>';
-
-                // Clear input setelah menambah pesanan
-                document.getElementById('name').value = '';
-                document.getElementById('foodOrder').value = '';
-
-                // Simpan data ke local storage
-                saveOrdersToLocalStorage();
-            }
-        }
-
-        // Function untuk menempatkan pesanan (menyimpan ke local storage)
-        function saveOrdersToLocalStorage() {
-            var table = document.getElementById('orderTable');
-            var orders = [];
-
-            // Loop through rows (skip header)
-            for (var i = 1; i < table.rows.length; i++) {
-                var order = {
-                    name: table.rows[i].cells[0].innerHTML,
-                    foodOrder: table.rows[i].cells[1].innerHTML,
-                    remark: table.rows[i].cells[2].innerHTML
-                };
-                orders.push(order);
-            }
-
-            // Simpan data ke local storage
-            localStorage.setItem('orders', JSON.stringify(orders));
-        }
-
-        // Function untuk membersihkan tabel
-        function clearTable() {
-            document.getElementById('orderTable').innerHTML = '<tr><th>Nama</th><th>Food Order</th><th>Remark</th><th>Aksi</th></tr>';
-        }
-
-        // Function untuk mengupdate remark
-        function updateRemark(button) {
-            var password = prompt('Masukkan password:');
-            if (password === 'tua') {
-                var row = button.parentNode.parentNode;
-                var remarkCell = row.cells[2];
-
-                if (remarkCell.innerHTML === 'Paid') {
-                    alert('Pesanan sudah dibayar.');
-                } else {
-                    remarkCell.innerHTML = 'Paid';
-                    row.classList.remove('waiting');
-                    row.classList.add('paid');
-
-                    // Simpan kembali data ke local storage setelah update
-                    saveOrdersToLocalStorage();
-                }
-            } else {
-                alert('Password salah. Remark tidak dapat diupdate.');
-            }
-        }
-
-        // Function untuk menghapus pesanan
-        function deleteOrder(button) {
-            var password = prompt('Masukkan password:');
-            if (password === 'tua') { // Ganti 'your_password' dengan password yang diinginkan
-                var row = button.parentNode.parentNode;
-                row.parentNode.removeChild(row);
-
-                // Simpan kembali data ke local storage setelah delete
-                saveOrdersToLocalStorage();
-            } else {
-                alert('Password salah. Pesanan tidak dapat dihapus.');
-            }
-        }
-        function autoRefresh() {
-            setInterval(function () {
-                // Pembaruan data dari Local Storage
-                var orders = localStorage.getItem('orders');
-                if (orders) {
-                    orders = JSON.parse(orders);
-                    var table = document.getElementById('orderTable');
-
-                    // Bersihkan tabel
-                    clearTable();
-
-                    // Populasi tabel dengan data terbaru dari Local Storage
-                    for (var i = 0; i < orders.length; i++) {
-                        var row = table.insertRow(-1);
-                        var cell1 = row.insertCell(0);
-                        var cell2 = row.insertCell(1);
-                        var cell3 = row.insertCell(2);
-                        var cell4 = row.insertCell(3);
-
-                        cell1.innerHTML = orders[i].name;
-                        cell2.innerHTML = orders[i].foodOrder;
-                        cell3.innerHTML = orders[i].remark;
-                        cell4.innerHTML = '<button onclick="updateRemark(this)">Update</button> ' +
-                            '<button onclick="deleteOrder(this)">Delete</button>';
-
-                        // Tambahkan kelas CSS sesuai dengan status remark
-                        if (orders[i].remark === 'Paid') {
-                            row.classList.add('paid');
-                        } else {
-                            row.classList.add('waiting');
-                        }
-                    }
-                }
-            }, 5000); // Setiap 5 detik
-        }
-
-        // Panggil fungsi autoRefresh saat halaman dimuat
-        window.onload = function () {
-            autoRefresh();
-        };
-        // Load data dari local storage saat halaman dimuat
-        window.onload = function () {
-            var orders = localStorage.getItem('orders');
-            if (orders) {
-                orders = JSON.parse(orders);
-                var table = document.getElementById('orderTable');
-
-                for (var i = 0; i < orders.length; i++) {
-                    var row = table.insertRow(-1);
-                    var cell1 = row.insertCell(0);
-                    var cell2 = row.insertCell(1);
-                    var cell3 = row.insertCell(2);
-                    var cell4 = row.insertCell(3);
-
-                    cell1.innerHTML = orders[i].name;
-                    cell2.innerHTML = orders[i].foodOrder;
-                    cell3.innerHTML = orders[i].remark;
-                    cell4.innerHTML = '<button onclick="updateRemark(this)">Update</button> ' +
-                        '<button onclick="deleteOrder(this)">Delete</button>';
-
-                    // Tambahkan kelas CSS sesuai dengan status remark
-                    if (orders[i].remark === 'Paid') {
-                        row.classList.add('paid');
-                    } else {
-                        row.classList.add('waiting');
-                    }
-                }
-            }
-        };
-    </script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
